@@ -14,7 +14,7 @@
       "name": "*os_base",
       "root-device-type": "ebs"
       },
-      "owners": ["601107670018"],
+      "owners": ["owner_id"],
       "most_recent": true
     },
     "instance_type": "t2.micro",
