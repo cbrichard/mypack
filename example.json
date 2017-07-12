@@ -1,7 +1,8 @@
 {
   "variables": {
     "aws_access_key": "",
-    "aws_secret_key": ""
+    "aws_secret_key": "",
+    "owner_id": ""
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -14,12 +15,12 @@
       "name": "*os_base",
       "root-device-type": "ebs"
       },
-      "owners": ["owner_id"],
+      "owners": "{{user `owner_id`}}",
       "most_recent": true
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "cachebase {{timestamp}}"
+    "ami_name": "cachebox {{timestamp}}"
   }],
   "provisioners": [{
     "type": "shell",
