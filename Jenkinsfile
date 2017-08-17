@@ -14,6 +14,5 @@ node {
     stage('Build Image') {
         sh('packer build centos-ami.json')
         }
-    }
-
 }
+
