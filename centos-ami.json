@@ -20,15 +20,14 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "cachebox {{timestamp}}"
+    "ami_name": "cloudbase-{{isotime \"2006-01-02\"}}"
   }],
   "provisioners": [{
     "type": "shell",
     "inline": [
-      "sleep 30",
+      "sleep 10",
       "sudo apt-get update",
-      "sudo apt-get install -y redis-server",
-      "sudo apt-get install -y nginx"
+      "sudo apt-get upgrade -y"
     ]
   }]
 }
