@@ -1,8 +1,8 @@
 {
   "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "owner_id": ""
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "owner_id": "601107670018"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -12,22 +12,21 @@
     "source_ami_filter": {
       "filters": {
       "virtualization-type": "hvm",
-      "name": "*os_base",
+      "name": "*Amazon Linux AMI",
       "root-device-type": "ebs"
       },
       "owners": "{{user `owner_id`}}",
       "most_recent": true
     },
     "instance_type": "t2.micro",
-    "ssh_username": "ubuntu",
+    "ssh_username": "ec2-user",
     "ami_name": "cloudbase-{{isotime \"2006-01-02\"}}"
   }],
   "provisioners": [{
     "type": "shell",
     "inline": [
       "sleep 10",
-      "sudo apt-get update",
-      "sudo apt-get upgrade -y"
+      "sudo yum update -y"
     ]
   }]
 }
